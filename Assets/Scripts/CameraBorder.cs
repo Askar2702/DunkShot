@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class CameraBorder : MonoBehaviour
 {
@@ -18,8 +19,9 @@ public class CameraBorder : MonoBehaviour
         if (_cam) AddCollision();
     }
 
-    private void AddCollision()
+    private async void AddCollision()
     {
+        await Task.Delay(1000);
         var edgeCol = GetComponent<EdgeCollider2D>() ? GetComponent<EdgeCollider2D>() : gameObject.AddComponent<EdgeCollider2D>();
 
 
