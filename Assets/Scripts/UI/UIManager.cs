@@ -79,6 +79,7 @@ public class UIManager : MonoBehaviour
         if (_score > _bestScore)
         {
             PlayerPrefs.SetInt("BestScore", _score);
+            _bestScore = _score;
             _bestScoreText.text = _bestScore.ToString();
         }
     }
@@ -87,13 +88,15 @@ public class UIManager : MonoBehaviour
     {
         _countStars++;
         _starScoreText.text = _countStars.ToString();
+        PlayerPrefs.SetInt("Star", _countStars);
     }
 
     private void LoadSettings()
     {
         _bestScore = PlayerPrefs.GetInt("BestScore");
+        _bestScoreText.text = _bestScore.ToString();
         _countStars = PlayerPrefs.GetInt("Star");
-        if (_countStars != 0)
+        if (_countStars > 0)
             _starScoreText.text = _countStars.ToString();
 
 
